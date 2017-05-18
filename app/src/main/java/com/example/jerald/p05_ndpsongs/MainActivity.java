@@ -17,11 +17,14 @@ public class MainActivity extends AppCompatActivity {
     TextView tvTitle,tvSinger,tvYear,tvStar;
     RadioButton rb1,rb2,rb3,rb4,rb5;
     Button btnInsert,btnShow;
+    RadioGroup rg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        rg = (RadioGroup)findViewById(R.id.rg);
 
         etTitle = (EditText)findViewById(R.id.etTitle);
         etSinger = (EditText)findViewById(R.id.etSinger);

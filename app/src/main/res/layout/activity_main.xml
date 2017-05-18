@@ -26,7 +26,7 @@
         android:id="@+id/tvSinger"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Song Title" />
+        android:text="Singers" />
 
     <EditText
         android:id="@+id/etSinger"
@@ -40,7 +40,7 @@
         android:id="@+id/tvYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Song Title" />
+        android:text="Year" />
 
     <EditText
         android:id="@+id/etYear"
