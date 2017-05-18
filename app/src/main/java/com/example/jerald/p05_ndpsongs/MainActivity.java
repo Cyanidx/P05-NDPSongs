@@ -1,11 +1,15 @@
 package com.example.jerald.p05_ndpsongs;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,5 +40,42 @@ public class MainActivity extends AppCompatActivity {
 
         btnInsert = (Button)findViewById(R.id.btnInsert);
         btnShow = (Button)findViewById(R.id.btnShow);
+        btnInsert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String title = etTitle.getText().toString();
+                String singer = etSinger.getText().toString();
+                int year = Integer.parseInt(etYear.getText().toString());
+                RadioGroup rg = (RadioGroup) findViewById(R.id.rg);
+                int selectedButtonId = rg.getCheckedRadioButtonId();
+                RadioButton rb = (RadioButton) findViewById(selectedButtonId);
+                String strAmountStars = rb.getText() + "";
+                int amountStars = Integer.parseInt(strAmountStars);
+
+
+                DBHelper dbh = new DBHelper(MainActivity.this);
+                long row_affected = dbh.insertSong(title, singer, year, amountStars);
+                dbh.close();
+
+                if (row_affected != -1){
+                    Toast.makeText(MainActivity.this, "Insert successful",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btnShow.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(MainActivity.this,
+                        SecondActivity.class);
+                // Start the new activity
+                startActivity(i);
+            }
+        });
+
+
+
+
     }
 }

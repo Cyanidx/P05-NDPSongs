@@ -59,7 +59,8 @@
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/rg">
 
         <RadioButton
             android:id="@+id/rb1"
@@ -103,13 +104,13 @@
             android:id="@+id/btnInsert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="INSERT" />
 
         <Button
             android:id="@+id/btnShow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="SHOW LIST" />
 
     </LinearLayout>
 
