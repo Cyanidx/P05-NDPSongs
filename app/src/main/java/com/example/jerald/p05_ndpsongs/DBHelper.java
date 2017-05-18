@@ -38,6 +38,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     }
+    public Cursor getData(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * from "+TABLE_NOTE+" WHERE "+COLUMN_ID+"="+id,null);
+        return res;
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -80,21 +85,21 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return song;
     }
-
-    public int updateSong(Song data){
+    // Bryan Edited
+    public int updateSong(int id, String title, String singer, int year, int star){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_title, data.getTitle());
-        values.put(COLUMN_singers, data.getSinger());
-        values.put(COLUMN_year, data.getYear());
-        values.put(COLUMN_star, data.getStar());
-        String condition = COLUMN_ID + "= ?";
-        String[] args = {String.valueOf(data.getId())};
-        int result = db.update(TABLE_NOTE, values, condition, args);
+        values.put(COLUMN_title, title);
+        values.put(COLUMN_singers, singer);
+        values.put(COLUMN_year, year);
+        values.put(COLUMN_star, star);
+        String condition = COLUMN_ID + "= ? ";
+
+        int result = db.update(TABLE_NOTE, values, condition, new String[] {Integer.toString(id)});
         db.close();
         return result;
     }
-
+    // Bryan Edited
     public int deleteSong(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         String condition = COLUMN_ID + "= ?";

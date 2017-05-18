@@ -4,6 +4,9 @@ package com.example.jerald.p05_ndpsongs;
  * Created by 15017292 on 18/5/2017.
  */
 
+// Bryan Edited: added setter
+
+
 public class Song {
 
     private int id;
@@ -18,6 +21,22 @@ public class Song {
         this.singer = singer;
         this.year = year;
         this.star = star;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setSinger(String singers) {
+        this.singer = singers;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setStar(int stars) {
+        this.star = stars;
     }
 
     public int getId() {
